@@ -1,0 +1,16 @@
+{
+  "name": "solanaid-sdk",
+  "version": "0.1.0",
+  "description": "SolanaID SDK for identity verification",
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "echo 'SDK build placeholder'",
+    "dev": "echo 'SDK dev placeholder'"
+  },
+  "dependencies": {
+    "@solana/web3.js": "^1.95.8"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.2"
+  }
+}
