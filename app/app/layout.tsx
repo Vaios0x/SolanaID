@@ -19,10 +19,19 @@ export const metadata: Metadata = {
   description: 'Prove your LinkedIn, GitHub, Twitter, and Google identities on Solana without revealing personal data',
   keywords: ['Solana', 'zkTLS', 'Identity', 'Verification', 'Privacy', 'Web3'],
   authors: [{ name: 'SolanaID Team' }],
+  manifest: '/manifest.json',
+  themeColor: '#00ff88',
+  viewport: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'black-translucent',
+    title: 'SolanaID',
+  },
   openGraph: {
     title: 'SolanaID - zkTLS Identity Verification',
     description: 'Decentralized identity verification powered by TLSNotary',
     type: 'website',
+    siteName: 'SolanaID',
   },
   twitter: {
     card: 'summary_large_image',
@@ -38,6 +47,31 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark">
+      <head>
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#00ff88" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="apple-mobile-web-app-title" content="SolanaID" />
+        <link rel="apple-touch-icon" href="/icons/icon-192x192.svg" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              if ('serviceWorker' in navigator) {
+                window.addEventListener('load', function() {
+                  navigator.serviceWorker.register('/sw.js')
+                    .then(function(registration) {
+                      console.log('SW registered: ', registration);
+                    })
+                    .catch(function(registrationError) {
+                      console.log('SW registration failed: ', registrationError);
+                    });
+                });
+              }
+            `,
+          }}
+        />
+      </head>
       <body className={`${inter.className} ${jetbrainsMono.variable} antialiased`}>
         <AppKitProvider>
           {/* Animated Backgrounds */}
