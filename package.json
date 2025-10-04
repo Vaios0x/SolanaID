@@ -9,7 +9,7 @@
     "tlsnotary/browser-extension"
   ],
   "scripts": {
-    "install": "npm install --prefix app && npm install --prefix sdk",
+    "install": "npm install --legacy-peer-deps --prefix app && npm install --legacy-peer-deps --prefix sdk",
     "build": "anchor build",
     "deploy": "anchor deploy",
     "deploy:devnet": "anchor deploy --provider.cluster devnet",
