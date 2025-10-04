@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  notary-1:
+    build:
+      context: ..
+      dockerfile: docker/notary.Dockerfile
+    ports:
+      - "7047:7047"
+    environment:
+      - NODE_ID=1
+      - BIND_ADDRESS=0.0.0.0:7047
+    restart: unless-stopped
+
+  notary-2:
+    build:
+      context: ..
+      dockerfile: docker/notary.Dockerfile
+    ports:
+      - "7048:7048"
+    environment:
+      - NODE_ID=2
+      - BIND_ADDRESS=0.0.0.0:7048
+    restart: unless-stopped
+
+  notary-3:
+    build:
+      context: ..
+      dockerfile: docker/notary.Dockerfile
+    ports:
+      - "7049:7049"
+    environment:
+      - NODE_ID=3
+      - BIND_ADDRESS=0.0.0.0:7049
+    restart: unless-stopped
